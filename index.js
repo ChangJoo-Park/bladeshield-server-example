@@ -1,12 +1,28 @@
 const express = require('express')
 const router = express.Router()
-
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const app = express()
 
-// Routes
-const issues = require('./routers/issues')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-console.log(process.env.DB_URL)
+// Database
+const db = mongoose.connection
+db.on('error', console.error)
+db.once('open', function () {
+  console.log('Connected to mongod server')
+})
+
+mongoose.connect(process.env.DB_URL)
+
+// View Engine
+app.set('view engine', 'pug');
+const viewController = require('./controllers/view')
+app.get('/', viewController);
+
+// Routes for API
+const issues = require('./routers/issues')
 app.use('/api/issues', issues)
 
 app.listen(3000, function () {
