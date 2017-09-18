@@ -1,5 +1,23 @@
 html
   head
     title!= title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css', integrity='sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M', crossorigin='anonymous')
   body
-    h1!= message
+    div#app
+      div
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+          a.navbar-brand(href='#') BladeShield
+        div.container
+          h1.title Errors
+          .list-group
+            a.list-group-item.list-group-item-action.issue-item(v-for="issue in issues", :key="issue._id")
+              h5.mb-1 {{issue.message}}&nbsp;
+                small {{issue.created_at}}
+              p.mb-1 {{issue.source}} -&nbsp;
+                strong {{issue.lineno}}:{{issue.colno}}
+    //- Scripts
+    script(src='https://unpkg.com/jquery@3.2.1/dist/jquery.js', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js', integrity='sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1', crossorigin='anonymous')
+    script(src='https://unpkg.com/vue@2.4.4/dist/vue.js')
+    script(src='/static/app.js')

@@ -16,6 +16,9 @@ db.once('open', function () {
 
 mongoose.connect(process.env.DB_URL)
 
+// Set static
+app.use('/static', express.static('public'));
+
 // View Engine
 app.set('view engine', 'pug');
 const viewController = require('./controllers/view')

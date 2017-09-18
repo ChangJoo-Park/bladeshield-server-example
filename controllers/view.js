@@ -1,6 +1,10 @@
+const Issue = require('../models/issue')
 
 const viewController = function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello !!!!'});
+  Issue.find(function (err, issues) {
+    if (err) return res.status(500).send({ error: 'database failure' })
+    res.render('index', { issues: issues });
+  })
 }
 
 module.exports = viewController

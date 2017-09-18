@@ -6,7 +6,8 @@ const IssueSchema = new Schema({
   source: { type: String, required: true },
   lineno: { type: Number, required: true },
   colno: { type: Number, required: true },
-  stacktraces: { type: Array, required: false }
+  stacktraces: { type: Array, required: false },
+  created_at: { type: Date, default: Date.now }
 })
 
 module.exports = mongoose.model('issue', IssueSchema)
