@@ -14,7 +14,7 @@ db.once('open', function () {
   console.log('Connected to mongod server')
 })
 
-mongoose.connect(process.env.DB_URL)
+mongoose.connect(process.env.MONGODB_URI || process.env.DB_URL)
 
 // Set static
 app.use('/static', express.static('public'));
