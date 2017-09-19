@@ -8,9 +8,9 @@ html
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
           a.navbar-brand(href='#') BladeShield
         div.container
-          h1.title Errors
+          h1.title Stacktraces
           .list-group
-            a.list-group-item.list-group-item-action.issue-item(v-for="issue in issues", :key="issue._id")
+            a.list-group-item.list-group-item-action.issue-item(v-for="issue in issues", :key="issue._id" v-cloak)
               h5.mb-1 {{issue.message}}&nbsp;
                 small {{issue.created_at}}
               p.mb-1 {{issue.source}} -&nbsp;
