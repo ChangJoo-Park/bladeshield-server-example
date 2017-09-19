@@ -16,7 +16,7 @@ router.post('/', function (req, res) {
     source: body.source || '',
     lineno: body.lineno || -1,
     colno: body.colno || -1,
-    stacktraces: body.stacktraces || []
+    stacktraces: body.stacktraces
   })
 
   issue.save(function (err, i) {
