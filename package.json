@@ -5,20 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "NODE_ENV=development nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
-    "express": "^4.15.4",
-    "mongoose": "^4.11.11",
-    "morgan": "^1.8.2",
-    "pug": "^2.0.0-rc.4"
+    "express": "^4.16.3",
+    "express-useragent": "^1.0.12",
+    "mongoose": "^4.13.14",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.17.5"
   }
 }
