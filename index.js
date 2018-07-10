@@ -15,7 +15,11 @@ db.once('open', function () {
   console.log('Connected to mongod server')
 })
 
-mongoose.connect(process.env.MONGODB_URI || process.env.DB_URL)
+if (process.env.NODE_ENV === 'development') {
+  mongoose.connect('mongodb://localhost/bladeshield')
+} else {
+  mongoose.connect(process.env.MONGODB_URI || process.env.DB_URL)
+}
 
 // Set static
 app.use('/static', express.static('public'));
